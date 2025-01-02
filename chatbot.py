@@ -88,8 +88,9 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
 """
     
     temperature = 0.7
-    
-    
+    with st.sidebar:
+        user_query = st.chat_input("請輸入……")   
+        
     prompt = ChatPromptTemplate.from_template(prompt + "Chat history: {chat_history}\nHuman: {user_question}\nAI:")
 
     llm = ChatOpenAI(openai_api_key = st.secrets["openai_api"], 
@@ -104,7 +105,7 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
     with st.container():
         container1 = st.container(height = None) # Size varies with the content
         
-        user_query = st.chat_input("請輸入英文長難句")
+        #user_query = st.chat_input("請輸入英文長難句")
         
         if len(msgs.messages) == 0:
             msgs.add_ai_message("Hi, 我是一位專門面向以中文為母語、進階學習的人的AI教師，擅長通過詳細解釋和分析來幫助學生理解英語句子結構和語法規則")
