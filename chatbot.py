@@ -19,7 +19,6 @@ st.set_page_config(page_title = "Gemini Chatbot",
 st.title = "Your English Sentence Analyst"
 
 user_query = ""
-st.session_state["login_status"] == True # Remove the login procedure
 
 if "login_status" not in st.session_state or st.session_state["login_status"] == False:
     with st.form("login"):
@@ -91,7 +90,8 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
     temperature = 0.7
     with st.sidebar:
         user_query = st.chat_input("請輸入……")   
-        st.markdown(user_query)
+        if user_query:
+            st.markdown(user_query)
         
     prompt = ChatPromptTemplate.from_template(prompt + "Chat history: {chat_history}\nHuman: {user_question}\nAI:")
 
