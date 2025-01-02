@@ -16,7 +16,7 @@ from langchain.prompts import (
 st.set_page_config(page_title = "Gemini Chatbot",
                    page_icon="👩‍🏫",
                    initial_sidebar_state = "expanded")
-st.title = "Gemini Chatbot"
+st.title = "Your English Sentence Analyst"
 
 user_query = ""
 
@@ -47,8 +47,7 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
     # tell langchain how to store memory and pass memory to gpt
     memory = ConversationBufferMemory(memory_key="chat_history",chat_memory=msgs, return_messages=True)
 
-    prompt = 
-    """
+    prompt = """
     # Role: 英语初学者专属AI教师
 
 ## Profile
