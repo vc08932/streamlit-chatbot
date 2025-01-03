@@ -54,12 +54,15 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
                                 max_value = 1.0,
                                 step = 0.1, 
                                 value = 0.5)
-    
+        llm_model = st.selectbox(
+            "選擇模型（不同模型有不同的 Rate Limit）"，
+            ("gemini-1.5-pro-latest", "gemini-1.5-flash-latest", "gemini-2.0-flash-exp", "gemini-exp-1206"),
+            placeholder = "Pick the powerful one")
     
     prompt = ChatPromptTemplate.from_template(prompt + "Chat history: {chat_history}\nHuman: {user_question}\nAI:")
 
     llm = ChatOpenAI(openai_api_key = st.secrets["openai_api"], 
-                     model = st.secrets["model"],
+                     model = llm_model,
                      temperature = temperature,
                      base_url = st.secrets["base_url"]) 
 
