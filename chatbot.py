@@ -56,7 +56,7 @@ if "login_status" in st.session_state and st.session_state["login_status"] == Tr
                                 value = 0.5)
         llm_model = st.selectbox(
             "選擇模型（不同模型有不同的 Rate Limit）",
-            ("gemini-1.5-pro-latest", "gemini-1.5-flash-latest", "gemini-2.0-flash-exp", "gemini-exp-1206"),
+            ("gemini-2.0-flash", "gemini-2.0-flash-lite-preview-02-05",  "gemini-1.5-pro-latest", "gemini-1.5-flash-latest", "gemini-2.0-flash-thinking-exp-01-21" , "gemini-2.0-pro-exp-02-05", "learnlm-1.5-pro-experimental"),
             placeholder = "Pick the powerful one")
     
     prompt = ChatPromptTemplate.from_template(prompt + "Chat history: {chat_history}\nHuman: {user_question}\nAI:")
