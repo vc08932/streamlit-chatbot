@@ -19,6 +19,7 @@ st.set_page_config(page_title = "Gemini Chatbot",
 st.title = "Your English Sentence Analyst"
 
 user_query = ""
+st.session_state["login_status"] = True # Disabled the login function
 
 if "login_status" not in st.session_state or st.session_state["login_status"] == False:
     with st.form("login"):
@@ -36,6 +37,7 @@ if "login_status" not in st.session_state or st.session_state["login_status"] ==
             
             if submit == True and password != st.secrets["login"]: 
                 st.write(":red[Wrong password.Please try again]")
+
 
 
 if "login_status" in st.session_state and st.session_state["login_status"] == True: 
